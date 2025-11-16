@@ -8,13 +8,14 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {NameAuthorMapper.class})
 public interface AuthorMapper {
 
     @Mapping(source = "name", target = "nameAuthor")
     @Mapping(source = "lastname", target = "lastnameAuthor")
     Author toEntitie(AuthorRequestDTO request);
 
+    @Mapping(source = "author", target = "nameAuthor", qualifiedByName = "nameCompletedAuthor")
     AuthorResponseDTO toDto(Author author);
 
     List<AuthorResponseDTO> toDto(List<Author> authors);
