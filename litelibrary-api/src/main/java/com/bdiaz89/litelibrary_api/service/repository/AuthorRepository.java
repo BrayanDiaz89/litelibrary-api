@@ -1,9 +1,9 @@
 package com.bdiaz89.litelibrary_api.service.repository;
 
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorRequestDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorResponseDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorUpdateDateOfDeathDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorWithListBooksDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorRequestDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorResponseDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorUpdateDateOfDeathDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorWithListBooksDTO;
 import com.bdiaz89.litelibrary_api.domain.entitie.Author;
 import com.bdiaz89.litelibrary_api.domain.entitie.Book;
 
@@ -31,4 +31,6 @@ public interface AuthorRepository {
     void delete(Long id);
 
     boolean existsById(Long id);
+
+    List<Author> getAuthorsByIds(List<Long> ids);
 }

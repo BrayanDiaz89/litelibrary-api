@@ -1,9 +1,9 @@
 package com.bdiaz89.litelibrary_api.service.entitie.crud;
 
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorRequestDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorResponseDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorUpdateDateOfDeathDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorWithListBooksDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorRequestDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorResponseDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorUpdateDateOfDeathDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorWithListBooksDTO;
 import com.bdiaz89.litelibrary_api.domain.entitie.Author;
 import com.bdiaz89.litelibrary_api.domain.entitie.Book;
 import com.bdiaz89.litelibrary_api.domain.exception.AuthorDoesNotExistsException;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
@@ -132,4 +131,12 @@ public class CrudAuthorRepository implements AuthorRepository {
                 .anyMatch(a -> a.getIdAuthor().equals(id));
     }
 
+    @Override
+    public List<Author> getAuthorsByIds(List<Long> ids) {
+        return authors.stream()
+                .filter(a-> ids.contains(a.getIdAuthor()))
+                .toList();
+    }
+
 }
+

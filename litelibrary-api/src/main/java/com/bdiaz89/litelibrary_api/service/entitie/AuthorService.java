@@ -1,10 +1,9 @@
 package com.bdiaz89.litelibrary_api.service.entitie;
 
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorRequestDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorResponseDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorUpdateDateOfDeathDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorWithListBooksDTO;
-import com.bdiaz89.litelibrary_api.domain.exception.AuthorDoesNotExistsException;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorRequestDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorResponseDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorUpdateDateOfDeathDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorWithListBooksDTO;
 import com.bdiaz89.litelibrary_api.domain.exception.InvalidRangeAgesSearchException;
 import com.bdiaz89.litelibrary_api.service.bussinesrules.create.AuthorCreationValidator;
 import com.bdiaz89.litelibrary_api.service.bussinesrules.patch.AuthorPatchValidator;

@@ -1,6 +1,6 @@
 package com.bdiaz89.litelibrary_api.service.bussinesrules.patch;
 
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorUpdateDateOfDeathDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorUpdateDateOfDeathDTO;
 import com.bdiaz89.litelibrary_api.domain.entitie.Author;
 import com.bdiaz89.litelibrary_api.domain.exception.InvalidRecordedDateException;
 import com.bdiaz89.litelibrary_api.service.repository.AuthorRepository;

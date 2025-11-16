@@ -1,9 +1,9 @@
 package com.bdiaz89.litelibrary_api.web.controller;
 
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorRequestDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorResponseDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorUpdateDateOfDeathDTO;
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorWithListBooksDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorRequestDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorResponseDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorUpdateDateOfDeathDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorWithListBooksDTO;
 import com.bdiaz89.litelibrary_api.service.entitie.AuthorService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

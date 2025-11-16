@@ -1,6 +1,6 @@
 package com.bdiaz89.litelibrary_api.service.bussinesrules.create;
 
-import com.bdiaz89.litelibrary_api.domain.dto.AuthorRequestDTO;
+import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorRequestDTO;
 import com.bdiaz89.litelibrary_api.domain.exception.AuthorWithInvalidAgeException;
 import org.springframework.stereotype.Component;
 

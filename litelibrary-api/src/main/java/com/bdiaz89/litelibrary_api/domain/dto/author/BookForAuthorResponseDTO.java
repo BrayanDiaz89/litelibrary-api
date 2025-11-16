@@ -1,7 +1,6 @@
-package com.bdiaz89.litelibrary_api.domain.dto;
+package com.bdiaz89.litelibrary_api.domain.dto.author;
 
 import com.bdiaz89.litelibrary_api.domain.entitie.Genre;
-import com.bdiaz89.litelibrary_api.domain.entitie.StatusBook;
 
 public record BookForAuthorResponseDTO(
         String title,

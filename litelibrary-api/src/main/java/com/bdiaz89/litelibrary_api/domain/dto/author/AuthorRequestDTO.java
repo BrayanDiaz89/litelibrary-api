@@ -1,4 +1,4 @@
-package com.bdiaz89.litelibrary_api.domain.dto;
+package com.bdiaz89.litelibrary_api.domain.dto.author;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
