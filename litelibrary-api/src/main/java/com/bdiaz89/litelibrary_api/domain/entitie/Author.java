@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,5 +20,6 @@ public class Author {
     private String lastnameAuthor;
     private LocalDate birthdate;
     private LocalDate dateOfDeath;
+    private List<Book> books = new ArrayList<>();
 
 }
