@@ -31,7 +31,7 @@ public class AuthorController {
         return ResponseEntity.created(url).body(authorCreated);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<AuthorResponseDTO>> getListOfAuthors(){
         return ResponseEntity.ok().body(service.getListOfAuthors());
     }

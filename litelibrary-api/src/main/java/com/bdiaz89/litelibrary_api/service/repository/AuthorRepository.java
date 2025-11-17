@@ -16,7 +16,7 @@ public interface AuthorRepository {
     List<AuthorResponseDTO> findAll();
     boolean existsByNameAndLastName(AuthorRequestDTO request);
     List<AuthorWithListBooksDTO> findAllWithBooks();
-    void associateBookWithAnAuthor(Long idAuthor, Book book);
+    void associateBookWithAnAuthor(List<Author> authorsAssociate, Book book);
     Author findById(Long id);
     AuthorResponseDTO findByIdResponse(Long id);
     AuthorWithListBooksDTO findByIdResponseWithBooks(Long id);

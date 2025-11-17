@@ -1,16 +1,19 @@
 package com.bdiaz89.litelibrary_api.web.exception;
 
+import com.bdiaz89.litelibrary_api.domain.entitie.Genre;
 import com.bdiaz89.litelibrary_api.domain.exception.*;
-import com.bdiaz89.litelibrary_api.domain.exception.book.ISBNAlreadyExistsException;
-import com.bdiaz89.litelibrary_api.domain.exception.book.InvalidAuthorListException;
-import com.bdiaz89.litelibrary_api.domain.exception.book.TitleAlreadyExistsException;
+import com.bdiaz89.litelibrary_api.domain.exception.book.*;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class RestExceptionHandler {
@@ -70,4 +73,55 @@ public class RestExceptionHandler {
         ErrorResponseDTO error = new ErrorResponseDTO("title-already-exists", ex.getMessage());
         return ResponseEntity.badRequest().body(error);
     }
+
+    @ExceptionHandler(BookDoesNotExistsException.class)
+    public ResponseEntity<Void> handleExceptionBookDoesNotExists(BookDoesNotExistsException ex){
+        return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(InvalidParametersSearchException.class)
+    public ResponseEntity<ErrorResponseDTO> handleExceptionInvalidParametersSearch(InvalidParametersSearchException ex){
+        ErrorResponseDTO error = new ErrorResponseDTO("invalid-parameter-search", ex.getMessage());
+        return ResponseEntity.badRequest().body(error);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponseDTO> handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+
+        Throwable cause = ex.getCause();
+
+        if (cause instanceof InvalidFormatException ifx
+                && ifx.getTargetType().isEnum()
+                && ifx.getTargetType().equals(Genre.class)) {
+
+            String invalidValue = String.valueOf(ifx.getValue());
+
+            String allowedValues = Arrays.stream(Genre.values())
+                    .map(Enum::name)
+                    .collect(Collectors.joining(", "));
+
+            String message = String.format(
+                    "El valor '%s' no es un género válido. Valores permitidos: [%s]",
+                    invalidValue,
+                    allowedValues
+            );
+
+            ErrorResponseDTO error = new ErrorResponseDTO("invalid-genre", message);
+            return ResponseEntity.badRequest().body(error);
+        }
+
+        ErrorResponseDTO generic = new ErrorResponseDTO(
+                "invalid-request-body",
+                "El cuerpo de la petición no es válido o está mal formado."
+        );
+        return ResponseEntity.badRequest().body(generic);
+    }
+
+    @ExceptionHandler(PublicationYearIsNotValidException.class)
+    public ResponseEntity<ErrorResponseDTO> handlePublicationYearIsNotValid(PublicationYearIsNotValidException ex){
+        ErrorResponseDTO error = new ErrorResponseDTO("publication-year-not-valid", ex.getMessage());
+        return ResponseEntity.badRequest().body(error);
+    }
+
+
 }

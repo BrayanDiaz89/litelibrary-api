@@ -55,9 +55,8 @@ public class CrudAuthorRepository implements AuthorRepository {
     }
 
     @Override
-    public void associateBookWithAnAuthor(Long idAuthor, Book book) {
-        Author author = findById(idAuthor);
-        author.getBooks().add(book);
+    public void associateBookWithAnAuthor(List<Author> authorsAssociate, Book book) {
+        authorsAssociate.forEach(a -> a.getBooks().add(book));
     }
 
     @Override
