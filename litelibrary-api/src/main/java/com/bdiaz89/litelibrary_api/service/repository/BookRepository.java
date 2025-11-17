@@ -5,6 +5,7 @@ import com.bdiaz89.litelibrary_api.domain.dto.book.BookResponseDTO;
 import com.bdiaz89.litelibrary_api.domain.dto.book.BookUpdateRequestDTO;
 import com.bdiaz89.litelibrary_api.domain.entitie.Book;
 import com.bdiaz89.litelibrary_api.domain.entitie.Genre;
+import com.bdiaz89.litelibrary_api.domain.entitie.StatusBook;
 
 import java.util.List;
 
@@ -30,4 +31,7 @@ public interface BookRepository {
     BookResponseDTO update(Long id, BookUpdateRequestDTO request);
 
     void delete(Long id);
+
+    void updateStatusBook(Long id, StatusBook status);
+
 }

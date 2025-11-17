@@ -2,6 +2,7 @@ package com.bdiaz89.litelibrary_api.domain.dto.book;
 
 import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorResponseDTO;
 import com.bdiaz89.litelibrary_api.domain.entitie.Genre;
+import com.bdiaz89.litelibrary_api.domain.entitie.StatusBook;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public record BookResponseDTO(
         List<AuthorResponseDTO> authors,
         String ISBN,
         Integer yearOfPublication,
-        Genre genre
+        Genre genre,
+        String status
 ) {
 }

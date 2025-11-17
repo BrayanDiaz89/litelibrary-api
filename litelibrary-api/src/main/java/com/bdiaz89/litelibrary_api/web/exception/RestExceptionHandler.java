@@ -3,6 +3,7 @@ package com.bdiaz89.litelibrary_api.web.exception;
 import com.bdiaz89.litelibrary_api.domain.entitie.Genre;
 import com.bdiaz89.litelibrary_api.domain.exception.*;
 import com.bdiaz89.litelibrary_api.domain.exception.book.*;
+import com.bdiaz89.litelibrary_api.domain.exception.customer.CustomerDoesNotExistsException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -118,9 +119,14 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(PublicationYearIsNotValidException.class)
-    public ResponseEntity<ErrorResponseDTO> handlePublicationYearIsNotValid(PublicationYearIsNotValidException ex){
+    public ResponseEntity<ErrorResponseDTO> handleExceptionPublicationYearIsNotValid(PublicationYearIsNotValidException ex){
         ErrorResponseDTO error = new ErrorResponseDTO("publication-year-not-valid", ex.getMessage());
         return ResponseEntity.badRequest().body(error);
+    }
+
+    @ExceptionHandler(CustomerDoesNotExistsException.class)
+    public ResponseEntity<Void> handleExceptionBookDoesNotExists(CustomerDoesNotExistsException ex){
+        return ResponseEntity.notFound().build();
     }
 
 

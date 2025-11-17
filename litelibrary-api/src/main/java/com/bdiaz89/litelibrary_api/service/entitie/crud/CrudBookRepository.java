@@ -6,6 +6,7 @@ import com.bdiaz89.litelibrary_api.domain.dto.book.BookUpdateRequestDTO;
 import com.bdiaz89.litelibrary_api.domain.entitie.Author;
 import com.bdiaz89.litelibrary_api.domain.entitie.Book;
 import com.bdiaz89.litelibrary_api.domain.entitie.Genre;
+import com.bdiaz89.litelibrary_api.domain.entitie.StatusBook;
 import com.bdiaz89.litelibrary_api.domain.exception.book.BookDoesNotExistsException;
 import com.bdiaz89.litelibrary_api.service.entitie.mapper.BookMapper;
 import com.bdiaz89.litelibrary_api.service.repository.BookRepository;
@@ -35,6 +36,7 @@ public class CrudBookRepository implements BookRepository {
         Book book = mapper.toEntitie(request);
         book.setId(idBook.incrementAndGet());
         book.setAuthors(authors);
+        book.setStatus(StatusBook.AVAILABLE);
         crudAuthorRepository.associateBookWithAnAuthor(authors, book);
         books.add(book);
         return mapper.toDto(book);
@@ -109,5 +111,11 @@ public class CrudBookRepository implements BookRepository {
     public void delete(Long id) {
         Book book = findById(id);
         books.remove(book);
+    }
+
+    @Override
+    public void updateStatusBook(Long id, StatusBook status) {
+        Book book = findById(id);
+        book.setStatus(status);
     }
 }

@@ -10,10 +10,11 @@ import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {BookStatusStringMapper.class})
 public interface BookMapper {
 
     @Mapping(source = "id", target = "idBook")
+    @Mapping(target = "status", qualifiedByName = "statusToString")
     BookResponseDTO toDto(Book book);
 
     List<BookResponseDTO> toDto(List<Book> books);

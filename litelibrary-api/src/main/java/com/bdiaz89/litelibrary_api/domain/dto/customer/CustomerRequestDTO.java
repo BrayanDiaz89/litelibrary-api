@@ -10,7 +10,7 @@ public record CustomerRequestDTO(
         @NotBlank(message = "El apellido del cliente no puede ser vacío")
         String lastname,
         @NotNull(message = "La identificación del cliente no puede ser vacío")
-        @Pattern(regexp = "^\\d{6,10}$", message = "El documento debe tener de 6 a 10 dígitos.")
+        @Pattern(regexp = "^\\d{6,10}$", message = "El documento debe tener de 6 a 10 dígitos. Y no debe tener letras")
         String identityDocument
 ) {
 }
