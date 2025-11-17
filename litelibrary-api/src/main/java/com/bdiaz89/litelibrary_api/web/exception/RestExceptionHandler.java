@@ -1,6 +1,9 @@
 package com.bdiaz89.litelibrary_api.web.exception;
 
 import com.bdiaz89.litelibrary_api.domain.exception.*;
+import com.bdiaz89.litelibrary_api.domain.exception.book.ISBNAlreadyExistsException;
+import com.bdiaz89.litelibrary_api.domain.exception.book.InvalidAuthorListException;
+import com.bdiaz89.litelibrary_api.domain.exception.book.TitleAlreadyExistsException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -48,5 +51,23 @@ public class RestExceptionHandler {
             errors.add(new ErrorResponseDTO(e.getField(), e.getDefaultMessage()));
         });
         return ResponseEntity.badRequest().body(errors);
+    }
+
+    @ExceptionHandler(InvalidAuthorListException.class)
+    public ResponseEntity<ErrorResponseDTO> handleExceptionInvalidAuthorList(InvalidAuthorListException ex){
+        ErrorResponseDTO error = new ErrorResponseDTO("invalid-list-author", ex.getMessage());
+        return ResponseEntity.badRequest().body(error);
+    }
+
+    @ExceptionHandler(ISBNAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponseDTO> handleExceptionISBNAlreadyExists(ISBNAlreadyExistsException ex){
+        ErrorResponseDTO error = new ErrorResponseDTO("isbn-already-exists", ex.getMessage());
+        return ResponseEntity.badRequest().body(error);
+    }
+
+    @ExceptionHandler(TitleAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponseDTO> handleExceptionTitleAlreadyExists(TitleAlreadyExistsException ex){
+        ErrorResponseDTO error = new ErrorResponseDTO("title-already-exists", ex.getMessage());
+        return ResponseEntity.badRequest().body(error);
     }
 }

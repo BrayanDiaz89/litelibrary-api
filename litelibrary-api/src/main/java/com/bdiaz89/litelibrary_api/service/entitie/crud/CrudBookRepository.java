@@ -35,4 +35,16 @@ public class CrudBookRepository implements BookRepository {
         books.add(book);
         return mapper.toDto(book);
     }
+
+    @Override
+    public boolean existsByTitle(BookRequestDTO request) {
+        return books.stream()
+                .anyMatch(b-> b.getTitle().equalsIgnoreCase(request.title()));
+    }
+
+    @Override
+    public boolean existsByISBN(BookRequestDTO request) {
+        return books.stream()
+                .anyMatch(b-> b.getISBN().equalsIgnoreCase(request.ISBN()));
+    }
 }

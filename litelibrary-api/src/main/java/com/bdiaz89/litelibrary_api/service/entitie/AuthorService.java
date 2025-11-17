@@ -5,7 +5,7 @@ import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorResponseDTO;
 import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorUpdateDateOfDeathDTO;
 import com.bdiaz89.litelibrary_api.domain.dto.author.AuthorWithListBooksDTO;
 import com.bdiaz89.litelibrary_api.domain.exception.InvalidRangeAgesSearchException;
-import com.bdiaz89.litelibrary_api.service.bussinesrules.create.AuthorCreationValidator;
+import com.bdiaz89.litelibrary_api.service.bussinesrules.create.author.AuthorCreationValidator;
 import com.bdiaz89.litelibrary_api.service.bussinesrules.patch.AuthorPatchValidator;
 import com.bdiaz89.litelibrary_api.service.bussinesrules.access.AuthorAccessValidator;
 import com.bdiaz89.litelibrary_api.service.repository.AuthorRepository;
