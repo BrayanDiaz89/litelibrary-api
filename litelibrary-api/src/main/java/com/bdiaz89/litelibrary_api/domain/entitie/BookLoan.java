@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,10 +15,11 @@ import java.util.List;
 @Setter
 public class BookLoan {
 
+    private Long idLoan;
     private Customer customer;
     private List<Book> books;
     private LocalDateTime dateAndTimeOfLoan;
-    private LocalDate bookReturnDate;
+    private LocalDateTime bookReturnDate;
 
     private Boolean penaltyPaid;
     private BigDecimal penaltyAmount;

@@ -118,4 +118,11 @@ public class CrudBookRepository implements BookRepository {
         Book book = findById(id);
         book.setStatus(status);
     }
+
+    @Override
+    public List<Book> getBooksByListId(List<Long> idsBooks) {
+        return books.stream()
+                .filter(b-> idsBooks.contains(b.getId()))
+                .toList();
+    }
 }

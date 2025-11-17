@@ -34,4 +34,6 @@ public interface BookRepository {
 
     void updateStatusBook(Long id, StatusBook status);
 
+    List<Book> getBooksByListId(List<Long> idsBooks);
+
 }
