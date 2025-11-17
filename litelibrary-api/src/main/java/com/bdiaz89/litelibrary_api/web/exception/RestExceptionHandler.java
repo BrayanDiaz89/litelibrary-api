@@ -6,7 +6,7 @@ import com.bdiaz89.litelibrary_api.domain.exception.book.*;
 import com.bdiaz89.litelibrary_api.domain.exception.customer.CustomerAlreadyExistsException;
 import com.bdiaz89.litelibrary_api.domain.exception.customer.CustomerDoesNotExistsException;
 import com.bdiaz89.litelibrary_api.domain.exception.loan.InvalidBookListException;
-import com.bdiaz89.litelibrary_api.domain.exception.loan.RequestedBooksNotAvailable;
+import com.bdiaz89.litelibrary_api.domain.exception.loan.RequestedBooksNotAvailableException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -144,8 +144,8 @@ public class RestExceptionHandler {
         return ResponseEntity.badRequest().body(error);
     }
 
-    @ExceptionHandler(RequestedBooksNotAvailable.class)
-    public ResponseEntity<ErrorResponseDTO> handleExceptionInvalidBookList(RequestedBooksNotAvailable ex){
+    @ExceptionHandler(RequestedBooksNotAvailableException.class)
+    public ResponseEntity<ErrorResponseDTO> handleExceptionRequestedBooksNotAvailable(RequestedBooksNotAvailableException ex){
         ErrorResponseDTO error = new ErrorResponseDTO("requested-books-not-available", ex.getMessage());
         return ResponseEntity.badRequest().body(error);
     }

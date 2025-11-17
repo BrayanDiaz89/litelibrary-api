@@ -3,15 +3,13 @@ package com.bdiaz89.litelibrary_api.service.entitie.crud;
 import com.bdiaz89.litelibrary_api.domain.dto.loan.BookLoanRequestDTO;
 import com.bdiaz89.litelibrary_api.domain.dto.loan.BookLoanResponseDTO;
 import com.bdiaz89.litelibrary_api.domain.entitie.*;
-import com.bdiaz89.litelibrary_api.domain.exception.loan.RequestedBooksNotAvailable;
+import com.bdiaz89.litelibrary_api.domain.exception.loan.RequestedBooksNotAvailableException;
 import com.bdiaz89.litelibrary_api.service.entitie.mapper.BookLoanMapper;
-import com.bdiaz89.litelibrary_api.service.repository.AuthorRepository;
 import com.bdiaz89.litelibrary_api.service.repository.BookLoanRepository;
 import com.bdiaz89.litelibrary_api.service.repository.BookRepository;
 import com.bdiaz89.litelibrary_api.service.repository.CustomerRepository;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +41,7 @@ public class CrudBookLoanRepository implements BookLoanRepository {
                 .filter(b-> b.getStatus().equals(StatusBook.AVAILABLE))
                 .toList();
         if(booksToLend.isEmpty()){
-            throw new RequestedBooksNotAvailable("Los libros están prestados actualmente. Valida su fecha de devolución en el repositorio.");
+            throw new RequestedBooksNotAvailableException("Los libros están prestados actualmente. Valida su fecha de devolución en el repositorio.");
         }
 
         booksToLend.forEach(b-> b.setStatus(StatusBook.BORROWED));
