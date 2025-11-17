@@ -31,6 +31,7 @@ public class CrudBookRepository implements BookRepository {
         List<Author> authors = crudAuthorRepository.getAuthorsByIds(request.idAuthors());
         Book book = mapper.toEntitie(request);
         book.setId(idBook.incrementAndGet());
+        book.setAuthors(authors);
         books.add(book);
         return mapper.toDto(book);
     }
