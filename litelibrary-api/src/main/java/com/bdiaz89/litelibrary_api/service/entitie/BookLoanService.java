@@ -1,5 +1,6 @@
 package com.bdiaz89.litelibrary_api.service.entitie;
 
+import com.bdiaz89.litelibrary_api.domain.dto.loan.BookLoanPenaltyResponseDTO;
 import com.bdiaz89.litelibrary_api.domain.dto.loan.BookLoanRequestDTO;
 import com.bdiaz89.litelibrary_api.domain.dto.loan.BookLoanResponseDTO;
 import com.bdiaz89.litelibrary_api.service.bussinesrules.create.loan.LoanCreationValidator;
@@ -23,5 +24,13 @@ public class BookLoanService {
     public BookLoanResponseDTO createLoan(BookLoanRequestDTO request) {
         creationValidators.forEach(v-> v.validate(request));
         return repository.create(request);
+    }
+
+    public List<BookLoanPenaltyResponseDTO> getAllLoans() {
+        return repository.findAll();
+    }
+
+    public BookLoanPenaltyResponseDTO getLoanById(Long id) {
+        return repository.findByIdResponse(id);
     }
 }

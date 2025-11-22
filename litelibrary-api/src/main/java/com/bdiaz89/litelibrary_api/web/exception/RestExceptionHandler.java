@@ -6,6 +6,7 @@ import com.bdiaz89.litelibrary_api.domain.exception.book.*;
 import com.bdiaz89.litelibrary_api.domain.exception.customer.CustomerAlreadyExistsException;
 import com.bdiaz89.litelibrary_api.domain.exception.customer.CustomerDoesNotExistsException;
 import com.bdiaz89.litelibrary_api.domain.exception.loan.InvalidBookListException;
+import com.bdiaz89.litelibrary_api.domain.exception.loan.LoanDoesNotExistsException;
 import com.bdiaz89.litelibrary_api.domain.exception.loan.RequestedBooksNotAvailableException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.http.ResponseEntity;
@@ -148,6 +149,11 @@ public class RestExceptionHandler {
     public ResponseEntity<ErrorResponseDTO> handleExceptionRequestedBooksNotAvailable(RequestedBooksNotAvailableException ex){
         ErrorResponseDTO error = new ErrorResponseDTO("requested-books-not-available", ex.getMessage());
         return ResponseEntity.badRequest().body(error);
+    }
+
+    @ExceptionHandler(LoanDoesNotExistsException.class)
+    public ResponseEntity<Void> handleExceptionLoanDoesNotExists(LoanDoesNotExistsException ex){
+        return ResponseEntity.notFound().build();
     }
 
 }

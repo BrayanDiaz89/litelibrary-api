@@ -5,7 +5,6 @@ import com.bdiaz89.litelibrary_api.domain.dto.book.BookResponseDTO;
 import com.bdiaz89.litelibrary_api.domain.dto.book.BookUpdateRequestDTO;
 import com.bdiaz89.litelibrary_api.domain.entitie.Genre;
 import com.bdiaz89.litelibrary_api.domain.exception.book.BookDoesNotExistsException;
-import com.bdiaz89.litelibrary_api.domain.exception.book.InvalidParametersSearchException;
 import com.bdiaz89.litelibrary_api.service.bussinesrules.access.book.BookAccessValidator;
 import com.bdiaz89.litelibrary_api.service.bussinesrules.create.book.BookCreationValidator;
 import com.bdiaz89.litelibrary_api.service.bussinesrules.update.book.BookUpdateValidator;
